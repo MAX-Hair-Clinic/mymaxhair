@@ -1,10 +1,19 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { PageLayout } from "@/components";
+import Button1 from "@/components/reusable/buttons/Button1";
 
 export default function Home() {
-  return <main className="">
-    <iframe />
-  </main>;
+  return (
+    <PageLayout showHeader>
+      <Dummy />
+    </PageLayout>
+  );
 }
+
+const Dummy = () => {
+  return (
+    <div className="w-full ">
+      <div className="h-screen bg-[var(--Primary)]"></div>
+      <div className="h-screen bg-[var(--Secondary)]"></div>
+    </div>
+  );
+};

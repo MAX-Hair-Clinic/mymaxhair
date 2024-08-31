@@ -1,3 +1,256 @@
+/*--------------------------------------------------
+	Tailwind Properties
+---------------------------------------------------*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*--------------------------------------------------
+	Color Theme
+---------------------------------------------------*/
+
+:root {
+  --Primary: #f1f1f1;
+  --Secondary: #1a1a1a;
+  --Accent: #e9cf7a;
+  --Border: #fff;
+
+  --Color1: #cb8b35;
+  --Color2: #353535;
+  --Color3: #feb93e;
+  --Color4: #;
+}
+
+/*--------------------------------------------------
+	General Styles
+---------------------------------------------------*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--Secondary);
+  border-radius: 5px;
+  border: 5px solid var(--Secondary);
+  padding-right: 5px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--Primary);
+  color: var(--Secondary);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow: visible !important;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
+  overflow-y: scroll;
+  transition: opacity 0.3s ease-in-out 0.2s;
+  -webkit-transition: opacity 0.3s ease-in-out 0.2s;
+}
+
+header,
+footer {
+  width: 100%;
+}
+
+aside {
+  width: max-content;
+}
+
+/*--------------------------------------------------
+	Text Styles
+---------------------------------------------------*/
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: calc(1rem + 3.15vw);
+    line-height: calc(1rem + 4.5vw);
+  }
+
+  h2 {
+    font-size: calc(1rem + 2.5vw);
+    line-height: calc(1rem + 3.5vw);
+  }
+
+  h3 {
+    font-size: calc(1rem + 1.75vw);
+    line-height: calc(1rem + 2.5vw);
+  }
+
+  h4 {
+    font-size: calc(1rem + 1vw);
+    line-height: calc(1rem + 1.5vw);
+  }
+
+  h5 {
+    font-size: calc(1rem + 0.75vw);
+    line-height: calc(1rem + 1.25vw);
+  }
+
+  h6 {
+    font-size: calc(1rem + 0.5vw);
+    line-height: calc(1rem + 1vw);
+  }
+
+  p,
+  a,
+  ul,
+  li,
+  span {
+    font-size: calc(1rem + 0.125vw);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1203px) {
+  h1 {
+    font-size: calc(1rem + 3.15vw);
+    line-height: calc(1rem + 4.5vw);
+  }
+
+  h2 {
+    font-size: calc(1rem + 2.5vw);
+    line-height: calc(1rem + 3.5vw);
+  }
+
+  h3 {
+    font-size: calc(1rem + 1.5vw);
+    line-height: calc(1rem + 2.5vw);
+  }
+
+  h4 {
+    font-size: calc(1rem + 1vw);
+    line-height: calc(1rem + 1.5vw);
+  }
+
+  h5 {
+    font-size: calc(1rem + 0.875vw);
+    line-height: calc(1rem + 1.5vw);
+  }
+
+  h6 {
+    font-size: calc(1rem + 0.625vw);
+    line-height: calc(1rem + 1.25vw);
+  }
+
+  p,
+  a,
+  ul,
+  li,
+  span {
+    font-size: calc(1rem + 0.375vw);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  h1 {
+    font-size: calc(1rem + 3.15vw);
+    line-height: calc(1rem + 4.5vw);
+  }
+
+  h2 {
+    font-size: calc(1rem + 2vw);
+    line-height: calc(1rem + 3vw);
+  }
+
+  h3 {
+    font-size: calc(1rem + 1.75vw);
+    line-height: calc(1rem + 2.5vw);
+  }
+
+  h4 {
+    font-size: calc(1rem + 1.125vw);
+    line-height: calc(1rem + 2vw);
+  }
+
+  h5 {
+    font-size: calc(1rem + 1vw);
+    line-height: calc(1rem + 1.75vw);
+  }
+
+  h6 {
+    font-size: calc(1rem + 0.875vw);
+    line-height: calc(1rem + 1.5vw);
+  }
+
+  p,
+  a,
+  ul,
+  li,
+  span {
+    font-size: calc(1rem + 0.225vw);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 1560px) {
+  h1 {
+    font-size: calc(1rem + 4.15vw);
+    line-height: calc(1rem + 5.5vw);
+  }
+
+  h2 {
+    font-size: calc(1rem + 3vw);
+    line-height: calc(1rem + 4vw);
+  }
+
+  h3 {
+    font-size: calc(1rem + 2.125vw);
+    line-height: calc(1rem + 3.5vw);
+  }
+
+  h4 {
+    font-size: calc(1rem + 1.75vw);
+    line-height: calc(1rem + 3vw);
+  }
+
+  h5 {
+    font-size: calc(1rem + 1.25vw);
+    line-height: calc(1rem + 2vw);
+  }
+
+  h6 {
+    font-size: calc(1rem + 1vw);
+    line-height: calc(1rem + 1.75vw);
+  }
+
+  p,
+  a,
+  ul,
+  li,
+  span {
+    font-size: calc(1rem + 0.625vw);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+}
