@@ -1,0 +1,60 @@
+[{
+    "id": 1,
+    "title": "Everything about Androgenic Alopecia",
+    "slug": "everything-about-androgenic-alopecia",
+    "desc": "Androgenic Alopecia is a genetically influenced condition characterized by continuous hair fall, which can sometimes lead to complete baldness.",
+    "featured": false,
+    "image": "blog1",
+    "category": ["Hair Care"],
+    "author": "MAX Hair Clinic",
+    "date": "August 08, 2024",
+    "content": [{
+            "type": "topic",
+            "topic": ""
+        },
+        {
+            "type": "heading",
+            "heading": ""
+        },
+        {
+            "type": "subHeading",
+            "subHeading": ""
+        },
+        {
+            "type": "content",
+            "content": ["", ""]
+        },
+        {
+            "type": "image",
+            "image": ""
+        },
+        {
+            "type": "list",
+            "items": ["", ""]
+        },
+        {
+            "type": "halfSection",
+            "halfSection": [{
+                    "type": "heading",
+                    "heading": ""
+                },
+                {
+                    "type": "subHeading",
+                    "subHeading": ""
+                },
+                {
+                    "type": "content",
+                    "content": ["", ""]
+                },
+                {
+                    "type": "image",
+                    "image": ""
+                },
+                {
+                    "type": "list",
+                    "items": ["", ""]
+                }
+            ]
+        }
+    ]
+}]

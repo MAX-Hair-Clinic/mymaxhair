@@ -12,13 +12,14 @@ const PageLayout: React.FC<LayoutProps> = ({
   showFooter = false,
 }) => {
   return (
-    <SmoothScroll>
+    <>
       {showHeader && <Header />}
 
-      {children}
-
-      {showFooter && <Footer />}
-    </SmoothScroll>
+      <SmoothScroll>
+        {children}
+        {showFooter && <Footer />}
+      </SmoothScroll>
+    </>
   );
 };
 

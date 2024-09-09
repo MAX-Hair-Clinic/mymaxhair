@@ -1,7 +1,7 @@
-const Button1: React.FC = () => {
+const Button1: React.FC = ({ children }: any) => {
   return (
     <button className="Button1">
-      <span>Menu</span>
+      <span>{children}</span>
     </button>
   );
 };

@@ -1,19 +1,57 @@
-import { PageLayout } from "@/components";
-import Button1 from "@/components/reusable/buttons/Button1";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
-export default function Home() {
+const Home = dynamic(() => import("./home"), {
+  suspense: true,
+});
+const Loader = dynamic(() => import("@/components/global/loader"), {
+  suspense: true,
+});
+const Spinner = dynamic(() => import("@/components/global/spinner"), {
+  suspense: false,
+});
+
+export default function WebsiteWrapper() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [minimumLoadingTime, setMinimumLoadingTime] = useState(4500);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobileDevice = window.innerWidth <= 768;
+      setIsMobile(isMobileDevice);
+
+      setMinimumLoadingTime(isMobileDevice ? 1500 : 4500);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const handleDOMContentLoaded = () => {
+      const loadTime = Date.now() - startTime;
+
+      if (loadTime < minimumLoadingTime) {
+        setTimeout(() => setIsLoading(false), minimumLoadingTime - loadTime);
+      } else {
+        setIsLoading(false);
+      }
+    };
+
+    const startTime = Date.now();
+
+    if (document.readyState === "complete") {
+      handleDOMContentLoaded();
+    } else {
+      window.addEventListener("load", handleDOMContentLoaded);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("load", handleDOMContentLoaded);
+    };
+  }, [minimumLoadingTime]);
+
   return (
-    <PageLayout showHeader>
-      <Dummy />
-    </PageLayout>
+    <>{isLoading ? <>{isMobile ? <Spinner /> : <Loader />}</> : <Home />}</>
   );
 }
-
-const Dummy = () => {
-  return (
-    <div className="w-full ">
-      <div className="h-screen bg-[var(--Primary)]"></div>
-      <div className="h-screen bg-[var(--Secondary)]"></div>
-    </div>
-  );
-};

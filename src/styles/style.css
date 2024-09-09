@@ -3,6 +3,7 @@
 ---------------------------------------------------*/
 
 /* Button 1 */
+
 button.Button1 {
   display: inline-block;
   font-family: inherit;
@@ -37,4 +38,24 @@ button.Button1:active {
 
 button.Button1:not(:disabled) {
   cursor: pointer;
+}
+
+/* Gradient */
+
+.GoldText {
+  background: rgb(233, 207, 122);
+  background: linear-gradient(
+    0deg,
+    rgba(233, 207, 122, 1) 0%,
+    rgba(203, 139, 53, 1) 33%,
+    rgba(233, 207, 122, 1) 66%,
+    rgba(203, 139, 53, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#MorphText {
+  filter: url(#threshold) blur(0.6px);
 }

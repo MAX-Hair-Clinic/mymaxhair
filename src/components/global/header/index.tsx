@@ -1,27 +1,26 @@
 import images from "@/assets";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Header1: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
+  const scrollRef = useRef<any>(null);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
-    document.body.style.overflow = isMenuOpen ? "auto" : "hidden";
+    const element = document.getElementById("__next");
+    if (element) {
+      element.style.overflow = isMenuOpen ? "auto" : "hidden";
+    } else {
+      console.error("Element with ID '__next' was not found in the DOM.");
+    }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setSticky(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    setSticky(true);
   }, []);
 
   const Logo_Section = () => (
@@ -37,11 +36,20 @@ const Header1: React.FC = () => {
   );
 
   const Menu_Section = () => (
-    <div className="lg:flex gap-20">
+    <div
+      className={`lg:flex gap-20 ${
+        isSticky ? "text-[var(--Secondary)]" : "text-[var(--Primary)]"
+      }`}
+    >
       <div className="hidden lg:block">
-        <Link href={"/book-appointment"} className="">
+        <button
+          onClick={() => {
+            alert("this is the Form Popup for Request Callback");
+          }}
+          className="text-xl xl:text-2xl"
+        >
           Request Callback?
-        </Link>
+        </button>
       </div>
 
       <div className="cursor-pointer">
@@ -50,8 +58,20 @@ const Header1: React.FC = () => {
           className="flex justify-center items-center gap-4 mb-0"
         >
           <div className="mt-2 -mb-2">
-            <span className="block border-black border-t-2 w-10 sm:w-12 lg:w-10 max-lg:mb-2"></span>
-            <span className="block border-black border-t-2 w-7 sm:w-7 lg:w-6"></span>
+            <span
+              className={`block border-t-2 w-10 sm:w-12 lg:w-10 max-lg:mb-2 ${
+                isSticky
+                  ? "border-[var(--Secondary)]"
+                  : "border-[var(--Primary)]"
+              }`}
+            ></span>
+            <span
+              className={`block border-t-2 w-7 sm:w-7 lg:w-6 ${
+                isSticky
+                  ? "border-[var(--Secondary)]"
+                  : "border-[var(--Primary)]"
+              }`}
+            ></span>
           </div>
 
           <p className="text-2xl lg:text-xl 2xl:text-2xl mb-0 font-medium tracking-wider">
@@ -76,20 +96,20 @@ const Header1: React.FC = () => {
     const menuItems = [
       { title: "Home" },
       {
-        title: "About",
+        title: "About MAX",
         subMenu: [{ title: "Clinical Tour" }],
       },
       {
-        title: "Services",
+        title: "Our Services",
         subMenu: [
           { title: "Surgical Treatments" },
           { title: "Non-Surgical Treatments" },
           { title: "Non-Invasive Treatments" },
         ],
       },
-      { title: "Celebrity's Choice" },
       { title: "Transformations" },
-      { title: "Blogs" },
+      { title: "Contact Us" },
+      { title: "Our Blogs" },
     ];
 
     const icons = [
@@ -178,7 +198,7 @@ const Header1: React.FC = () => {
             <div className="w-full lg:w-2/5 lg:flex flex-col justify-between items-start max-lg:py-10 max-lg:px-5">
               <div className="hidden lg:block text-center">
                 <h3 className="uppercase lg:text-3xl xl:text-4xl 2xl:text-6xl leading-tight font-bold mb-0">
-                  Book Free Appointment
+                  Book Your Appointment
                 </h3>
                 <h4 className="uppercase lg:text-xl xl:text-2xl 2xl:text-4xl leading-normal 2xl:font-semibold">
                   <Link
@@ -198,7 +218,7 @@ const Header1: React.FC = () => {
                   />
                   <Link
                     href={"tel:18002026112"}
-                    className="uppercase lg:text-xl xl:text-2xl 2xl:text-5xl leading-normal font-black mb-0"
+                    className="uppercase lg:text-xl xl:text-2xl 2xl:text-5xl leading-normal font-black"
                   >
                     1800 202 6112
                   </Link>
@@ -216,7 +236,7 @@ const Header1: React.FC = () => {
                       <li key={index} className="mb-5 lg:mb-0 xl:mb-3">
                         <Link
                           href={formatHref(item.title)}
-                          className="text-xl xl:text-2xl 2xl:text-3xl leading-normal font-semibold hover:text-[var(--Color3)]"
+                          className="text-xl xl:text-2xl 2xl:text-3xl leading-normal font-semibold hover:text-[var(-- Color3)]"
                         >
                           {item.title}
                         </Link>
@@ -226,11 +246,11 @@ const Header1: React.FC = () => {
                 </div>
 
                 <div className="w-full flex lg:flex-col 2xl:flex-row justify-center items-center lg:gap-3">
-                  <h4 className="w-full 2xl:w-2/5 lg:text-xl 2xl:text-2xl mb-0 font-bold text-center">
+                  <h4 className="w-2/5 2xl:w-2/5 lg:text-xl 2xl:text-2xl mb-0 font-bold text-center">
                     Social Links
                   </h4>
 
-                  <div className="w-full 2xl:w-3/5 grid grid-cols-3">
+                  <div className="w-3/5 2xl:w-3/5 grid grid-cols-3">
                     {icons.map((icon, index) => (
                       <Link key={index} href={icon.link} className="flex mb-0">
                         <Image
@@ -252,6 +272,7 @@ const Header1: React.FC = () => {
 
   return (
     <header
+      ref={scrollRef}
       id="Header"
       className={`fixed top-0 left-0 w-full z-50 ${
         isSticky ? "bg-white shadow-md" : "bg-transparent shadow-none"
