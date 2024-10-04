@@ -9,6 +9,7 @@ const Hero: React.FC = () => {
       "Max Hair Clinic incorporated in 2004 is self-defined brand name in the modern world of Hair transplant in India cascading excellence in delivery, we continue our operations in a class apart from OPD facilities environment for more than 18 years of experience with our visitors from all over the world.",
       "Max Hair Clinic incorporated in 2004 is self-defined brand name in the modern world of Hair transplant in India cascading excellence in delivery",
     ],
+    button: "To Know More",
     bgImg: images.home.hero_bg,
   };
 
@@ -55,6 +56,8 @@ const Hero: React.FC = () => {
               </p>
             ))}
           </div>
+
+          {/* <Button></Button> */}
         </div>
       );
     };

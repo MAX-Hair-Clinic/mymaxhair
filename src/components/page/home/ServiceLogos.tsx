@@ -1,8 +1,9 @@
 import images from "@/assets";
-import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import Image from "next/image";
+import Link from "next/link";
 
-const ServiceSlider: React.FC = () => {
+const ServiceLogos: React.FC = () => {
   const serviceData = [
     images.logo.service.logo1,
     images.logo.service.logo2,
@@ -15,22 +16,20 @@ const ServiceSlider: React.FC = () => {
   ];
 
   return (
-    <div id="ServiceSlider" className="w-full bg-white border-b-black border-2">
-      <Marquee
-        speed={80}
-        direction="right"
-        className="overflow-hidden"
-        style={{ overflowY: "hidden" }}
-      >
-        <div className="flex gap-5 lg:gap-10 xl:gap-16 2xl:gap-10 overflow-hidden">
+    <div
+      id="Home_ServiceLogos"
+      className="w-full bg-white border-b-black border-2 overflow-hidden"
+    >
+      <Marquee direction="right" speed={200}>
+        <div className="w-[calc()] flex gap-5 lg:gap-10 xl:gap-16 2xl:gap-10">
           {serviceData.map((image, index) => (
-            <div key={index} className="lg:-mx-8">
+            <Link key={index} href={""} className="flex-shrink-0 lg:-mx-8">
               <Image
                 src={image}
                 alt={`ServiceLogo${index}`}
                 className="w-full sm:w-4/5 lg:w-3/5 sm:mx-auto"
               />
-            </div>
+            </Link>
           ))}
         </div>
       </Marquee>
@@ -38,4 +37,4 @@ const ServiceSlider: React.FC = () => {
   );
 };
 
-export default ServiceSlider;
+export default ServiceLogos;

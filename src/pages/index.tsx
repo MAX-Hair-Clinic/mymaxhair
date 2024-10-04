@@ -14,7 +14,7 @@ const Spinner = dynamic(() => import("@/components/global/spinner"), {
 export default function WebsiteWrapper() {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [minimumLoadingTime, setMinimumLoadingTime] = useState(4500);
+  const [minimumLoadingTime, setMinimumLoadingTime] = useState(500);
 
   useEffect(() => {
     const handleResize = () => {

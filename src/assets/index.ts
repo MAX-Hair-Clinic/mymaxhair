@@ -47,6 +47,10 @@ const images: ImageMap = {
 
   home: {
     hero_bg: require("./page/home/hero2.jpg"),
+
+    locations: {
+      bangalore: require("./page/home/locations/bangalore.jpg"),
+    },
   },
 
   blog: {

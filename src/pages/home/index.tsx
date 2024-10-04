@@ -6,6 +6,24 @@ export default function Home() {
       <Hero />
       <ServiceSlider />
       <LocationsSlider />
+
+      <div className="h-screen" />
     </PageLayout>
   );
 }
+
+/*
+
+Section Plan
+
+Hero
+Service Slider
+Locations
+USPs
+About
+Mascot
+Services
+Testimonials
+FAQs
+
+*/

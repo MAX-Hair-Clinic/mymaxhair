@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import Button1 from "@/components/reusable/buttons/Button1";
 
-const Header1: React.FC = () => {
+const Header11: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
   const scrollRef = useRef<any>(null);
@@ -30,7 +29,7 @@ const Header1: React.FC = () => {
         <Image
           src={images.logo.Gold_Combi}
           alt="Header_Logo"
-          className="w-48 sm:w-60 lg:w-48 xl:w-52 2xl:w-60"
+          className="w-48 sm:w-60"
         />
       </Link>
     </div>
@@ -38,61 +37,22 @@ const Header1: React.FC = () => {
 
   const Menu_Section = () => (
     <div
-      className={`lg:flex gap-10 ${
+      className={`lg:flex gap-20 ${
         isSticky ? "text-[var(--Secondary)]" : "text-[var(--Primary)]"
       }`}
     >
-      <div className="hidden lg:flex w-full justify-center items-center gap-4 mb-0">
-        <ul className="w-full flex gap-4 2xl:gap-5 mb-0">
-          {menuItems.map((item, index) => (
-            <li
-              key={index}
-              className="relative group mb-0" // 'group' added to target hover
-            >
-              <Link
-                href={formatHref(item.title)}
-                className="text-lg lg:text-base xl:text-xl 2xl:text-2xl mb-0 leading-normal font-semibold hover:text-[var(--Color3)]"
-              >
-                {item.title}
-              </Link>
-
-              {item.subMenu && (
-                <ul className="absolute left-0 hidden group-hover:block w-max p-5 mt-2 2xl:mt-4 bg-white shadow-lg">
-                  {/* 'hidden' class to hide submenu initially, 'group-hover:block' to show on hover */}
-                  {item.subMenu.map((subItem, subIndex) => (
-                    <li key={subIndex} className="mb-2">
-                      <Link
-                        href={formatHref(
-                          subItem.title,
-                          formatHref(item.title).substring(1)
-                        )}
-                        className="text-lg lg:text-base xl:text-xl 2xl:text-2xl mb-0 leading-normal font-medium hover:text-[var(--Color3)]"
-                      >
-                        {subItem.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       <div className="hidden lg:block">
-        <Button1>
-          <p
-            onClick={() => {
-              alert("this is the Form Popup for Request Callback");
-            }}
-            className="text-lg xl:text-xl 2xl:text-2xl mb-0 max-xl:-m-2"
-          >
-            Request Callback?
-          </p>
-        </Button1>
+        <button
+          onClick={() => {
+            alert("this is the Form Popup for Request Callback");
+          }}
+          className="text-xl xl:text-2xl"
+        >
+          Request Callback?
+        </button>
       </div>
 
-      <div className="cursor-pointer lg:hidden">
+      <div className="cursor-pointer">
         <button
           onClick={toggleMenu}
           className="flex justify-center items-center gap-4 mb-0"
@@ -118,8 +78,6 @@ const Header1: React.FC = () => {
             Menu
           </p>
         </button>
-
-        <div className=""></div>
       </div>
     </div>
   );
@@ -134,51 +92,52 @@ const Header1: React.FC = () => {
       : `/${formattedTitle}`;
   };
 
-  const menuItems = [
-    { title: "Home" },
-    {
-      title: "About",
-    },
-    {
-      title: "Services",
-      subMenu: [
-        { title: "Surgical Treatments" },
-        { title: "Non-Surgical Treatments" },
-        { title: "Non-Invasive Treatments" },
-      ],
-    },
-    { title: "Alter Ego" },
-    { title: "Contact" },
-    { title: "Blogs" },
-  ];
-
-  const icons = [
-    {
-      link: "https://www.facebook.com/profile.php?id=61552402914366",
-      src: images.icons.light.social.facebook,
-      alt: "Facebook",
-    },
-    {
-      link: "https://www.instagram.com/maxhairclinicofficial/",
-      src: images.icons.light.social.instagram,
-      alt: "Instagram",
-    },
-    {
-      link: "https://www.youtube.com/@MaxHairClinicGlobal",
-      src: images.icons.light.social.youtube,
-      alt: "YouTube",
-    },
-  ];
-
-  const legal = [
-    { title: "Privacy Policy" },
-    { title: "Terms & Conditions" },
-    { title: "Cookie Policy" },
-  ];
-
   const SideBar = () => {
+    const menuItems = [
+      { title: "Home" },
+      {
+        title: "About MAX",
+        subMenu: [{ title: "Clinical Tour" }],
+      },
+      {
+        title: "Our Services",
+        subMenu: [
+          { title: "Surgical Treatments" },
+          { title: "Non-Surgical Treatments" },
+          { title: "Non-Invasive Treatments" },
+        ],
+      },
+      { title: "Transformations" },
+      { title: "Contact Us" },
+      { title: "Our Blogs" },
+    ];
+
+    const icons = [
+      {
+        link: "https://www.facebook.com/profile.php?id=61552402914366",
+        src: images.icons.light.social.facebook,
+        alt: "Facebook",
+      },
+      {
+        link: "https://www.instagram.com/maxhairclinicofficial/",
+        src: images.icons.light.social.instagram,
+        alt: "Instagram",
+      },
+      {
+        link: "https://www.youtube.com/@MaxHairClinicGlobal",
+        src: images.icons.light.social.youtube,
+        alt: "YouTube",
+      },
+    ];
+
+    const legal = [
+      { title: "Privacy Policy" },
+      { title: "Terms & Conditions" },
+      { title: "Cookie Policy" },
+    ];
+
     return (
-      <div className="w-full relative z-10 lg:hidden">
+      <div className="w-full relative z-10">
         <div
           className={`w-screen h-screen fixed top-0 left-0 z-0 ${
             isMenuOpen ? "block" : "hidden"
@@ -187,7 +146,7 @@ const Header1: React.FC = () => {
         />
         <aside
           id="Sidebar"
-          className={`fixed z-10 top-0 left-0 w-screen lg:w-3/5 h-screen text-[var(--Primary)] bg-[var(--Secondary)] transform transition-transform duration-[2s] ease-in-out p-5 lg:p-8 ${
+          className={`fixed z-10 top-0 right-0 w-screen lg:w-3/5 h-screen text-[var(--Primary)] bg-[var(--Secondary)] transform transition-transform duration-[2s] ease-in-out p-5 lg:p-8 ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -203,12 +162,12 @@ const Header1: React.FC = () => {
           <div className="w-full h-[calc(100vh-80px)] flex flex-col lg:flex-row justify-between lg:py-5 xl:py-10 lg:px-5 max-xl:!pr-0 2xl:p-10">
             <div className="w-full lg:w-3/5 max-lg:py-10 max-lg:px-5">
               <nav className="flex flex-col justify-center items-start">
-                <ul className="w-full flex flex-col 2xl:gap-2 mb-0">
+                <ul className="w-full flex flex-col 2xl:gap-2">
                   {menuItems.map((item, index) => (
-                    <li key={index} className="mb-4 lg:mb-0 xl:mb-5">
+                    <li key={index} className="mb-5 lg:mb-0 xl:mb-5">
                       <Link
                         href={formatHref(item.title)}
-                        className="text-2xl xl:text-4xl 2xl:text-5xl leading-normal font-semibold hover:text-[var(--Color3)]"
+                        className="text-3xl xl:text-4xl 2xl:text-5xl leading-normal font-semibold hover:text-[var(--Color3)]"
                       >
                         {item.title}
                       </Link>
@@ -236,7 +195,7 @@ const Header1: React.FC = () => {
               </nav>
             </div>
 
-            <div className="w-full lg:w-2/5 lg:flex flex-col justify-between items-start max-lg:py-5 max-lg:px-5">
+            <div className="w-full lg:w-2/5 lg:flex flex-col justify-between items-start max-lg:py-10 max-lg:px-5">
               <div className="hidden lg:block text-center">
                 <h3 className="uppercase lg:text-3xl xl:text-4xl 2xl:text-6xl leading-tight font-bold mb-0">
                   Book Your Appointment
@@ -328,4 +287,4 @@ const Header1: React.FC = () => {
   );
 };
 
-export default Header1;
+export default Header11;

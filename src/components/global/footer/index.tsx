@@ -22,17 +22,22 @@ const Footer: React.FC = () => {
     },
   ];
 
-  const quickLinks = ["Home", "About MAX", "Transformations", "Our Blogs"];
+  const quickLinks = [
+    "Home",
+    "About",
+    "Alter Ego",
+    "Blogs",
+  ];
 
   const categories = [
-    "Our Services",
+    "Services",
     "Surgical Treatments",
     "Non-Surgical Treatments",
     "Non-Invasive Treatments",
   ];
 
   const legalLinks = [
-    "Contact Us",
+    "Contact",
     "Privacy Policy",
     "Terms & Conditions",
     "Cookie Policy",
@@ -87,13 +92,15 @@ const Footer: React.FC = () => {
       title,
       links,
     }) => (
-      <div className="w-full text-[var(--Primary)] px-5">
+      <div className="w-full text-[var(--Primary)] max-lg:px-5">
         <h4 className="text-3xl font-semibold mb-5">{title}</h4>
-        <ul className="w-full flex flex-col pl-5">
+        <ul className="w-full flex flex-col">
           {links.map((link) => (
             <li key={link} className="w-max">
               <Link href={formatHref(link)} className="">
-                <p className="capitalize text-2xl max-lg:mb-0">{link}</p>
+                <p className="capitalize text-2xl lg:text-xl xl:text-2xl max-lg:mb-0">
+                  {link}
+                </p>
               </Link>
             </li>
           ))}
@@ -108,10 +115,10 @@ const Footer: React.FC = () => {
           <FooterSection title="Categories" links={categories} />
           <FooterSection title="Legal" links={legalLinks} />
 
-          <div className="w-full text-[var(--Primary)] px-5">
+          <div className="w-full text-[var(--Primary)] max-lg:px-5">
             <h4 className="text-3xl font-semibold mb-5">Contact</h4>
-            <ul className="w-full flex flex-col text-[var(--Primary)] pl-5">
-              <li className="flex gap-2">
+            <ul className="w-full flex flex-col text-[var(--Primary)]">
+              <li className="flex gap-2 mb-5">
                 {contactLinks.map((item, index) => (
                   <Link
                     key={index}
@@ -119,26 +126,30 @@ const Footer: React.FC = () => {
                     className="mb-0"
                     target="_blank"
                   >
-                    <p className="capitalize text-2xl mb-0">
+                    <p className="capitalize text-2xl lg:text-xl xl:text-2xl  mb-0">
                       {item.title} {index < contactLinks.length - 1 && " |"}
                     </p>
                   </Link>
                 ))}
               </li>
 
-              <li className="">
+              <li className="mb-5">
                 <Link href="tel:18002026112" className="">
-                  <p className="text-2xl mb-0">1800 202 6112 (toll-free)</p>
+                  <p className="text-2xl lg:text-xl xl:text-2xl  mb-0">
+                    1800 202 6112 (toll-free)
+                  </p>
                 </Link>
               </li>
 
-              <li className="">
+              <li className="mb-5">
                 <Link href="mailto:info@mymaxhair.com" className="">
-                  <p className="text-2xl mb-0">info@mymaxhair.com</p>
+                  <p className="text-2xl lg:text-xl xl:text-2xl  mb-0">
+                    info@mymaxhair.com
+                  </p>
                 </Link>
               </li>
 
-              <li className="w-full flex gap-5">
+              <li className="w-full flex gap-5 mb-5">
                 {icons.map((icon, index) => (
                   <Link
                     key={index}
